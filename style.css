@@ -1,0 +1,11 @@
+.stock-table__row--head {
+	background-color: #87ceeb;
+}
+
+.stock-table__row--odd {
+	background-color: #ffffff;
+}
+
+.stock-table__row--even {
+	background-color: #d3d3d3;
+}
