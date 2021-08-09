@@ -1,4 +1,4 @@
-let tableBody = document.getElementById("tbody");
+let tableBody = document.getElementById("stock-table__body");
 
 fetch(
 	"https://raw.githubusercontent.com/weffwd/take-home-assessment/main/data.json"
