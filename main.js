@@ -1,5 +1,13 @@
+function createNode(element) {
+	return document.createElement(element);
+}
+
+function appendElement(parent, el) {
+	return parent.appendChild(el);
+}
+
 const createTableRowElement = (transactions) => {
-	let trs = "";
+	let trs = [];
 	transactions.map((transaction, index) => {
 		let className = "";
 		if (index % 2 === 0) {
@@ -7,7 +15,15 @@ const createTableRowElement = (transactions) => {
 		} else {
 			className = "stock-table__row--odd";
 		}
-		trs += `<tr class=${className}><td>${transaction.stock.name}</td><td>${transaction.price}</td></tr>`;
+		const newTr = createNode("tr");
+		newTr.className = className;
+		const stockNameTd = createNode("td");
+		stockNameTd.innerHTML = `${transaction.stock.name}`;
+		const stockPriceTd = createNode("td");
+		stockPriceTd.innerHTML = `${transaction.price}`;
+		appendElement(newTr, stockNameTd);
+		appendElement(newTr, stockPriceTd);
+		trs.push(newTr);
 	});
 	return trs;
 };
@@ -20,7 +36,7 @@ fetch(
 		let tableBody = document.getElementById("stock-table__body");
 		tableBody.innerHTML = "";
 		let trs = createTableRowElement(transactions);
-		tableBody.innerHTML += trs;
+		trs.map((tr) => appendElement(tableBody, tr));
 	});
 
 const handleOrdering = () => {
@@ -35,7 +51,7 @@ const handleOrdering = () => {
 			);
 			tableBody.innerHTML = "";
 			let trs = createTableRowElement(sortedTransactions);
-			tableBody.innerHTML += trs;
+			trs.map((tr) => appendElement(tableBody, tr));
 		});
 };
 
