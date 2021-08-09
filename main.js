@@ -28,6 +28,7 @@ const createTableRowElement = (transactions) => {
 	return trs;
 };
 
+// 최초 스크립트 로딩 시, API 호출
 fetch(
 	"https://raw.githubusercontent.com/weffwd/take-home-assessment/main/data.json"
 )
@@ -39,6 +40,7 @@ fetch(
 		trs.map((tr) => appendElement(tableBody, tr));
 	});
 
+// Button 클릭 시, API 호출
 const handleOrdering = () => {
 	fetch(
 		"https://raw.githubusercontent.com/weffwd/take-home-assessment/main/data.json"
