@@ -25,7 +25,7 @@ const handleOrdering = () => {
 		.then((response) => response.json())
 		.then((transactions) => {
 			const sortedTransactions = transactions.sort((a, b) =>
-				a.price > b.price ? 1 : -1
+				a.price > b.price ? -1 : 1
 			);
 			let trs = "";
 			tableBody.innerHTML = "";
